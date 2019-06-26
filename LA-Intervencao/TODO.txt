@@ -1,0 +1,17 @@
+> Corrigir visualização do Cluster
+> Alterar a visão do cluster
+	> poder adicionar os labels dos clusters
+> Criar coluna para cluster
+> [ OK ] Criar importação para JSON
+> Criar página iniciar com as informações de data science ( home [ A / E / P ] )
+> Ajustar o pós tratamento da tabela após a importação
+> Criar visualização das informações na etapa de explorar dados
+> Adicionar campo de "nome" para a discretização
+> Criar segmentação entre as funcionalidades do professor e estudante
+	> Analista
+	> Estudante
+	> Professor
+> Filtrar dados conforme o perfil
+> Criar colunas para os campos
+	> Cluster
+	> Predição ( predição e taxa de acerto )

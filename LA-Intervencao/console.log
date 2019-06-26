@@ -1,0 +1,986 @@
+DEFININDO MODELO...
+intervencao.db
+sqlite:///C:\Users\bstoll\source\repos\LA-Intervencao\LA-Intervencao\\intervencao.db
+  >> Tabela de Usuários
+  >> Tabela de Fonte de Dados
+  >> Tabela de Tabelas
+  >> Tabela de Colunas
+  >> Tabela de Exibição de Colunas
+  >> Tabela de Tabela de Predições
+  >> Tabela de Tabela de Predições x Algoritmos
+  >> Tabela de Tabela de Descrição
+  >> Tabela de Visões
+  >> Tabela de Painel
+  >> Tabela de Mensagem
+quantidade por resultado
+quantidade 0.23263635
+por -0.06571369
+resultado -0.011238064
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[quantidade, por, resultado]
+---------------------------------------------------------------------------
+palavra: quantidade
+dep_ ROOT
+head quantidade
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.59395874
+matéria
+0.28543815
+estudo
+-0.11063676
+>>>>>
+similaridades...
+final_result
+0.33353645
+resultado
+-0.23114151
+nota
+0.25417376
+previsão
+0.35194322
+>>>>>
+similaridades...
+quantidade
+1.0
+alunos
+0.08679505
+
+Coluna selecionada: quantidade ( quantidade,alunos ) 1.0
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head resultado
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: resultado
+dep_ nmod
+head quantidade
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+-0.067970864
+matéria
+-0.13114133
+estudo
+0.414468
+>>>>>
+similaridades...
+final_result
+0.09847639
+resultado
+1.0
+nota
+-0.10892026
+previsão
+-0.035804804
+>>>>>
+similaridades...
+quantidade
+-0.20552208
+alunos
+-0.012182358
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 1.0
+---------------------------------------------------------------------------------
+Medidas ( 1 )
+quantidade
+Dimensoes ( 1 )
+final_result
+GerarSQL:
+SELECT 
+       rowid, 
+       Sum(1) AS Sum_quantidade, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END
+gráfico de pizza
+quantidade por resultado e disciplina
+quantidade 0.23449644
+por -0.112512186
+resultado 0.0436961
+e -0.15473683
+disciplina 0.15873247
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[quantidade, por, resultado, e, disciplina]
+---------------------------------------------------------------------------
+palavra: quantidade
+dep_ ROOT
+head quantidade
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.6535635
+matéria
+0.32732594
+estudo
+-0.11393182
+>>>>>
+similaridades...
+final_result
+0.39541087
+resultado
+-0.17323028
+nota
+0.31567395
+previsão
+0.3571582
+>>>>>
+similaridades...
+quantidade
+1.0
+alunos
+0.083258666
+
+Coluna selecionada: quantidade ( quantidade,alunos ) 1.0
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head resultado
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: resultado
+dep_ nmod
+head quantidade
+pos_ NOUN
+conjuncts (disciplina,)
+>>>>>
+similaridades...
+disciplina
+0.093302496
+matéria
+-0.0929277
+estudo
+0.16615091
+>>>>>
+similaridades...
+final_result
+0.19379418
+resultado
+1.0
+nota
+-0.07449654
+previsão
+-0.18200764
+>>>>>
+similaridades...
+quantidade
+-0.09539257
+alunos
+-0.14872819
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 1.0
+---------------------------------------------------------------------------
+palavra: e
+dep_ cc
+head disciplina
+pos_ CCONJ
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: disciplina
+dep_ conj
+head resultado
+pos_ NOUN
+conjuncts (resultado,)
+>>>>>
+similaridades...
+disciplina
+1.0
+matéria
+0.77688265
+estudo
+0.3569447
+>>>>>
+similaridades...
+final_result
+0.3317742
+resultado
+0.15136315
+nota
+0.7414653
+previsão
+0.750708
+>>>>>
+similaridades...
+quantidade
+0.4609967
+alunos
+0.046697207
+
+Coluna selecionada: descr_module ( disciplina,matéria,estudo ) 1.0
+---------------------------------------------------------------------------------
+Medidas ( 1 )
+quantidade
+Dimensoes ( 2 )
+final_result
+descr_module
+GerarSQL:
+SELECT 
+       rowid, 
+       t0.descr_module AS descr_module, 
+       Sum(1) AS Sum_quantidade, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY t0.descr_module,CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END
+gráfico de linhas!!!
+param1 "LA :: Prev :: Falha"
+quantidade por disciplina onde resultado é igual a param1
+quantidade por disciplina onde resultado é igual a param1
+quantidade 0.25653845
+por -0.01916021
+disciplina 0.13396963
+onde 1.0
+existe filtro!
+sentenca base: quantidade por disciplina
+sentenca filtro: onde resultado é igual a param1
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[quantidade, por, disciplina]
+---------------------------------------------------------------------------
+palavra: quantidade
+dep_ ROOT
+head quantidade
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.6097097
+matéria
+0.2934766
+estudo
+-0.09707245
+>>>>>
+similaridades...
+final_result
+0.33760184
+resultado
+-0.1960097
+nota
+0.25969857
+previsão
+0.35705474
+>>>>>
+similaridades...
+quantidade
+1.0
+alunos
+0.0730455
+
+Coluna selecionada: quantidade ( quantidade,alunos ) 1.0
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head disciplina
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: disciplina
+dep_ nmod
+head quantidade
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+1.0
+matéria
+0.39836836
+estudo
+-0.0033406462
+>>>>>
+similaridades...
+final_result
+0.14774856
+resultado
+-0.1295386
+nota
+0.29780248
+previsão
+0.42506567
+>>>>>
+similaridades...
+quantidade
+0.38555333
+alunos
+0.05096188
+
+Coluna selecionada: descr_module ( disciplina,matéria,estudo ) 1.0
+---------------------------------------------------------------------------------
+Medidas ( 1 )
+quantidade
+Dimensoes ( 1 )
+descr_module
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[onde, resultado, é, igual, a, param1]
+---------------------------------------------------------------------------
+palavra: onde
+dep_ advmod
+head igual
+pos_ ADV
+conjuncts ()
+é filtro (onde). palavra: onde 1.0
+---------------------------------------------------------------------------
+palavra: resultado
+dep_ nsubj
+head igual
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.08757468
+matéria
+-0.11590193
+estudo
+0.25924852
+>>>>>
+similaridades...
+final_result
+0.2954679
+resultado
+1.0
+nota
+-0.1617592
+previsão
+-0.15660703
+>>>>>
+similaridades...
+quantidade
+-0.07493777
+alunos
+-0.017265765
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 1.0
+---------------------------------------------------------------------------
+palavra: é
+dep_ cop
+head igual
+pos_ VERB
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: igual
+dep_ ROOT
+head igual
+pos_ ADJ
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: a
+dep_ case
+head param1
+pos_ DET
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: param1
+dep_ obl
+head igual
+pos_ NOUN
+conjuncts ()
+ignorado...
+---------------------------------------------------------------------------------
+Medidas ( 0 )
+Dimensoes ( 1 )
+final_result
+filtro_ColMedida []
+filtro_ColDimensoes [<model.dataBase.Coluna object at 0x0000022B847EF208>]
+GerarSQL:
+SELECT 
+       rowid, 
+       t0.descr_module AS descr_module, 
+       Sum(1) AS Sum_quantidade FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' ) and final_result= 'LA :: Prev :: Falha'
+ GROUP BY t0.descr_module
+gráfico de barras
+acumulo por prevenção
+acumulo 0.22647439
+por -0.015914109
+prevenção 0.12714496
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[acumulo, por, prevenção]
+---------------------------------------------------------------------------
+palavra: acumulo
+dep_ ROOT
+head acumulo
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.25937536
+matéria
+-0.11415635
+estudo
+0.32079542
+>>>>>
+similaridades...
+final_result
+0.3851299
+resultado
+0.2950116
+nota
+-0.07191468
+previsão
+0.029437091
+>>>>>
+similaridades...
+quantidade
+0.12623169
+alunos
+0.053298015
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 0.3851299
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head prevenção
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: prevenção
+dep_ nmod
+head acumulo
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.27208334
+matéria
+0.3224761
+estudo
+0.10304544
+>>>>>
+similaridades...
+final_result
+0.08442764
+resultado
+0.0062395916
+nota
+0.2274544
+previsão
+0.33295792
+>>>>>
+similaridades...
+quantidade
+0.24092421
+alunos
+0.069603786
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 0.33295792
+---------------------------------------------------------------------------------
+Medidas ( 1 )
+final_result
+Dimensoes ( 1 )
+final_result
+GerarSQL:
+SELECT 
+       rowid, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END
+gráfico de pizza
+agrupamento por prevenção
+agrupamento 0.18526097
+por 0.018281307
+prevenção 0.09633014
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[agrupamento, por, prevenção]
+---------------------------------------------------------------------------
+palavra: agrupamento
+dep_ ROOT
+head agrupamento
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.18952739
+matéria
+-0.14381456
+estudo
+0.43151847
+>>>>>
+similaridades...
+final_result
+0.41673243
+resultado
+0.4354247
+nota
+0.004180474
+previsão
+0.06442082
+>>>>>
+similaridades...
+quantidade
+0.111497566
+alunos
+-0.015087152
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 0.4354247
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head prevenção
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: prevenção
+dep_ nmod
+head agrupamento
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.26423773
+matéria
+0.3123249
+estudo
+0.0945096
+>>>>>
+similaridades...
+final_result
+0.07005154
+resultado
+-0.00924146
+nota
+0.22251767
+previsão
+0.33827117
+>>>>>
+similaridades...
+quantidade
+0.20951845
+alunos
+0.0850521
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 0.33827117
+---------------------------------------------------------------------------------
+Medidas ( 1 )
+final_result
+Dimensoes ( 1 )
+final_result
+GerarSQL:
+SELECT 
+       rowid, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END
+gráfico de pizza
+bando por prevenção
+bando 0.20074713
+por 0.07217214
+prevenção 0.11097337
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[bando, por, prevenção]
+---------------------------------------------------------------------------
+palavra: bando
+dep_ ROOT
+head bando
+pos_ VERB
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head prevenção
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: prevenção
+dep_ obl
+head bando
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.21930079
+matéria
+0.28489327
+estudo
+0.051938
+>>>>>
+similaridades...
+final_result
+0.04349457
+resultado
+-0.015070588
+nota
+0.18737715
+previsão
+0.2636661
+>>>>>
+similaridades...
+quantidade
+0.2094529
+alunos
+0.07315492
+
+Coluna selecionada: descr_module ( disciplina,matéria,estudo ) 0.28489327
+---------------------------------------------------------------------------------
+Medidas ( 0 )
+Dimensoes ( 1 )
+descr_module
+GerarSQL:
+SELECT 
+       rowid, 
+       t0.descr_module AS descr_module, 
+       1 AS quantidade, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY t0.descr_module,CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END,1
+Operação não permitida
+fartura por prevenção
+fartura 0.18599392
+por 0.0058248523
+prevenção 0.14698954
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[fartura, por, prevenção]
+---------------------------------------------------------------------------
+palavra: fartura
+dep_ ROOT
+head fartura
+pos_ VERB
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head prevenção
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: prevenção
+dep_ obl
+head fartura
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.2838025
+matéria
+0.34618253
+estudo
+0.13741094
+>>>>>
+similaridades...
+final_result
+0.10215618
+resultado
+0.020461973
+nota
+0.24450253
+previsão
+0.36662966
+>>>>>
+similaridades...
+quantidade
+0.24962923
+alunos
+0.105647966
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 0.36662966
+---------------------------------------------------------------------------------
+Medidas ( 0 )
+Dimensoes ( 1 )
+final_result
+GerarSQL:
+SELECT 
+       rowid, 
+       t0.descr_module AS descr_module, 
+       1 AS quantidade, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY t0.descr_module,CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END,1
+Operação não permitida
+aluvião por prevenção
+aluvião 0.25796452
+por 0.011401824
+prevenção 0.12017857
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[aluvião, por, prevenção]
+---------------------------------------------------------------------------
+palavra: aluvião
+dep_ ROOT
+head aluvião
+pos_ VERB
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head prevenção
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: prevenção
+dep_ nmod
+head aluvião
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.28735155
+matéria
+0.32553488
+estudo
+0.11676683
+>>>>>
+similaridades...
+final_result
+0.102741145
+resultado
+0.020211674
+nota
+0.22769094
+previsão
+0.3339809
+>>>>>
+similaridades...
+quantidade
+0.23812301
+alunos
+0.10457239
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 0.3339809
+---------------------------------------------------------------------------------
+Medidas ( 0 )
+Dimensoes ( 1 )
+final_result
+GerarSQL:
+SELECT 
+       rowid, 
+       t0.descr_module AS descr_module, 
+       1 AS quantidade, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY t0.descr_module,CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END,1
+Operação não permitida
+acúmulo por prevenção
+acúmulo 0.17153476
+por -0.01948686
+prevenção 0.104873195
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[acúmulo, por, prevenção]
+---------------------------------------------------------------------------
+palavra: acúmulo
+dep_ ROOT
+head acúmulo
+pos_ VERB
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head prevenção
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: prevenção
+dep_ nmod
+head acúmulo
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.2695827
+matéria
+0.32414374
+estudo
+0.13097523
+>>>>>
+similaridades...
+final_result
+0.11214479
+resultado
+0.036578123
+nota
+0.23834391
+previsão
+0.33429247
+>>>>>
+similaridades...
+quantidade
+0.23799942
+alunos
+0.12576148
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 0.33429247
+---------------------------------------------------------------------------------
+Medidas ( 0 )
+Dimensoes ( 1 )
+final_result
+GerarSQL:
+SELECT 
+       rowid, 
+       t0.descr_module AS descr_module, 
+       1 AS quantidade, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY t0.descr_module,CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END,1
+Operação não permitida
+concentração por prevenção
+concentração 0.2151875
+por -0.06069874
+prevenção 0.14270224
+---------------------------------------------------------------------------
+>>> ProcessarSentenca
+[concentração, por, prevenção]
+---------------------------------------------------------------------------
+palavra: concentração
+dep_ ROOT
+head concentração
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.7417177
+matéria
+0.5867069
+estudo
+0.09761522
+>>>>>
+similaridades...
+final_result
+0.41805163
+resultado
+-0.06793662
+nota
+0.48716074
+previsão
+0.62762654
+>>>>>
+similaridades...
+quantidade
+0.7526902
+alunos
+0.13354851
+
+Coluna selecionada: quantidade ( quantidade,alunos ) 0.7526902
+---------------------------------------------------------------------------
+palavra: por
+dep_ case
+head prevenção
+pos_ ADP
+conjuncts ()
+---------------------------------------------------------------------------
+palavra: prevenção
+dep_ nmod
+head concentração
+pos_ NOUN
+conjuncts ()
+>>>>>
+similaridades...
+disciplina
+0.28661358
+matéria
+0.35405028
+estudo
+0.1456137
+>>>>>
+similaridades...
+final_result
+0.09094532
+resultado
+0.020975294
+nota
+0.25124416
+previsão
+0.37261555
+>>>>>
+similaridades...
+quantidade
+0.23551604
+alunos
+0.09177621
+
+Coluna selecionada: final_result ( final_result,resultado,nota,previsão ) 0.37261555
+---------------------------------------------------------------------------------
+Medidas ( 1 )
+quantidade
+Dimensoes ( 1 )
+final_result
+GerarSQL:
+SELECT 
+       rowid, 
+       Sum(1) AS Sum_quantidade, CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END AS final_result FROM 
+[__dados_finais] as t0 
+ WHERE 0=0 
+ AND (CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END IS NULL 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END = '?' 
+  OR  CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END LIKE 'LA :: Prev%' ) 
+
+ and  (final_result = '' or final_result LIKE 'LA :: Prev%' )
+ GROUP BY CASE WHEN t0.final_result IN ( 'Pass' , 'Distinction' ) THEN 'Sucesso' WHEN t0.final_result IN ( 'Fail' , 'Withdrawn' ) THEN 'Falha' ELSE t0.final_result END
+gráfico de pizza
